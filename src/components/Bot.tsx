@@ -426,7 +426,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
                             )}
                         </For>
                     </div>
-                    <SendButton
+                    <TextInput
                         backgroundColor={props.textInput?.backgroundColor}
                         textColor={props.textInput?.textColor}
                         placeholder={props.textInput?.placeholder}
@@ -434,8 +434,11 @@ export const Bot = (props: BotProps & { class?: string }) => {
                         fontSize={props.fontSize}
                         defaultValue={userInput()}
                         onSubmit={handleSubmit}
-                        waitForAssistant={assistantTyping()}
-                    />
+                    >
+                        <SendButton
+                            waitForAssistant={assistantTyping()}
+                        />
+                    </TextInput>
                 </div>
                 <Badge badgeBackgroundColor={props.badgeBackgroundColor} poweredByTextColor={props.poweredByTextColor} botContainer={botContainer} />
                 <BottomSpacer ref={bottomSpacer} />
