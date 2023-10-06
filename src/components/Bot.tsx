@@ -9,6 +9,7 @@ import { BotMessageTheme, TextInputTheme, UserMessageTheme } from '@/features/bu
 import { Badge } from './Badge'
 import socketIOClient from 'socket.io-client'
 import { Popup } from '@/features/popup'
+import { SendButton } from './SendButton'
 
 type messageType = 'apiMessage' | 'userMessage' | 'usermessagewaiting'
 
@@ -111,6 +112,7 @@ const defaultWelcomeMessage = 'Hi there! How can I help?'
 ]*/
 
 export const Bot = (props: BotProps & { class?: string }) => {
+    const [assistantTyping, setAssistantTyping] = createSignal(false)
     let chatContainer: HTMLDivElement | undefined
     let bottomSpacer: HTMLDivElement | undefined
     let botContainer: HTMLDivElement | undefined
@@ -424,7 +426,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
                             )}
                         </For>
                     </div>
-                    <TextInput
+                    <SendButton
                         backgroundColor={props.textInput?.backgroundColor}
                         textColor={props.textInput?.textColor}
                         placeholder={props.textInput?.placeholder}
@@ -432,6 +434,7 @@ export const Bot = (props: BotProps & { class?: string }) => {
                         fontSize={props.fontSize}
                         defaultValue={userInput()}
                         onSubmit={handleSubmit}
+                        waitForAssistant={assistantTyping()}
                     />
                 </div>
                 <Badge badgeBackgroundColor={props.badgeBackgroundColor} poweredByTextColor={props.poweredByTextColor} botContainer={botContainer} />
