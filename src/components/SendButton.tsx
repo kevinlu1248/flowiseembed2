@@ -8,6 +8,7 @@ type SendButtonProps = {
   isDisabled?: boolean;
   isLoading?: boolean;
   disableIcon?: boolean;
+  isAssistantTyping?: boolean;
 } & JSX.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const SendButton = (props: SendButtonProps) => {
